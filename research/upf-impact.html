@@ -1,154 +1,168 @@
 <!DOCTYPE html>
-<html lang="en-AU">
+<html lang="en-AU" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Public Health Crisis of Ultra-Processed Foods | Rawat Labs</title>
+    <title>Public Health Crisis: UPF | RAWAT LABS</title>
+    <meta name="description" content="Research Report RL2: The metabolic and systemic impact of Ultra-Processed Foods.">
+
+    <link rel="icon" type="image/x-icon" href="../assets/rawatlabs-logo.ico">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #FAFAFA; /* Light Paper Background */
-            color: #111111; 
+        /* --- SWISS STYLE VARIABLES --- */
+        :root {
+            --ink: #111111;
+            --slate: #64748B;
+            --highlight: #4F46E5; /* Indigo-600 */
+            --danger: #DC2626; /* Red-600 */
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAFAFA;
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        /* --- UTILITIES --- */
+        .section-padding {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        /* Subtle Grid */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+                linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
+            opacity: 0.4;
+        }
 
         /* Chart Container */
-        .chart-container { 
-            position: relative; 
-            width: 100%; 
-            height: 350px; 
-            margin: 0 auto; 
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            margin: auto;
         }
 
-        /* Nav Tabs */
-        .nav-btn {
+        /* Interactive Tabs */
+        .nav-tab {
             border-bottom: 2px solid transparent;
             color: #64748B;
             transition: all 0.2s;
+            cursor: pointer;
         }
-        .nav-btn:hover { color: #111; }
-        .nav-btn.active { 
-            border-bottom: 2px solid #D97706; /* Amber-600 */
-            color: #111; 
-            font-weight: 600;
+        .nav-tab:hover { color: #111; }
+        .nav-tab.active { 
+            border-bottom-color: var(--highlight); 
+            color: var(--highlight); 
+            font-weight: 600; 
         }
 
-        /* Utilities */
-        .card {
-            background-color: #FFFFFF;
-            border: 1px solid #E2E8F0;
-            border-radius: 0.75rem;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-        .card:hover { transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-        
+        /* Animations */
         .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
 
-    <header class="bg-gradient-to-b from-slate-900 to-slate-800 border-b border-slate-700 text-white">
-        <div class="px-4 py-3 md:px-8 flex justify-between items-center border-b border-slate-700/50">
-            <a href="../index.html" class="text-slate-400 hover:text-white text-sm font-medium transition-colors flex items-center gap-2 group">
-                <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i>
-                Back to Lab
-            </a>
+<body class="relative min-h-screen flex flex-col">
+
+    <div class="fixed inset-0 bg-grid -z-10 pointer-events-none"></div>
+
+    <header class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50">
+        <div class="container mx-auto px-6 h-16 flex justify-between items-center">
             
-            <a href="20251209-RL2 The Public Health Crisis of Ultra-Processed Foods A Research Report.pdf" download class="flex items-center gap-2 px-3 py-1.5 bg-slate-700/50 hover:bg-slate-700 text-amber-400 hover:text-amber-300 text-xs md:text-sm font-semibold rounded-lg transition-all border border-slate-600 hover:border-amber-500/50">
-                <i data-lucide="download" class="w-4 h-4"></i>
-                <span class="hidden md:inline">Download Research Report (PDF)</span>
-                <span class="md:hidden">PDF Report</span>
+            <a href="../index.html" class="flex items-center gap-2 group">
+                <img src="../assets/rawatlabs-logo.png" alt="RAWAT LABS Logo" class="w-8 h-8">
+                <span class="font-bold text-lg tracking-tight group-hover:text-indigo-600 transition-colors">RAWAT LABS</span>
             </a>
-        </div>
 
-        <div class="py-10 px-4 text-center">
-            <div class="max-w-4xl mx-auto">
-                <div class="inline-block bg-amber-900/50 text-amber-400 border border-amber-700/50 text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-wider">
-                    RAWAT LABS • BODY LAB • RL2
-                </div>
-                <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-4">
-                    The Public Health Crisis of Ultra-Processed Foods
-                </h1>
-                <p class="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
-                    Modern industrial foods are engineered for craving but linked to a <span class="text-amber-400 font-bold">62% increased risk</span> of all-cause mortality.
-                </p>
+            <div class="flex items-center gap-4">
+                 <a href="20251209-RL2 The Public Health Crisis of Ultra-Processed Foods A Research Report.pdf" download class="flex items-center gap-2 px-4 py-2 text-xs font-semibold bg-indigo-50 text-indigo-700 hover:bg-indigo-100 rounded-lg transition border border-indigo-200">
+                    <i data-lucide="download" class="w-3 h-3"></i> PDF Report
+                </a>
             </div>
         </div>
     </header>
 
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex space-x-6 overflow-x-auto no-scrollbar justify-center">
-                <button onclick="switchView('nova')" class="nav-btn active py-4 text-sm whitespace-nowrap">1. NOVA Definition</button>
-                <button onclick="switchView('data')" class="nav-btn py-4 text-sm whitespace-nowrap">2. Mortality Data</button>
-                <button onclick="switchView('body')" class="nav-btn py-4 text-sm whitespace-nowrap">3. Systemic Impact</button>
-                <button onclick="switchView('mechanisms')" class="nav-btn py-4 text-sm whitespace-nowrap">4. Mechanisms</button>
+    <main class="pt-24 flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <section class="text-center mb-10 max-w-4xl mx-auto">
+            <div class="inline-block mb-4 px-3 py-1 bg-indigo-50 border border-indigo-100 rounded-full">
+                <span class="text-xs font-semibold text-indigo-700 tracking-wider uppercase">Research Report RL2 • Body Lab</span>
             </div>
-        </div>
-    </nav>
+            <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                The Public Health Crisis of <br/> <span class="text-red-600">Ultra-Processed Foods</span>
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                Modern industrial foods are engineered for craving but linked to a <strong>62% increased risk</strong> of all-cause mortality.
+            </p>
+        </section>
 
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
-
-        <section id="view-nova" class="view-section">
-            <div class="max-w-3xl mx-auto text-center mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Defining the Danger</h2>
-                <p class="text-gray-600">The <strong>NOVA classification system</strong> categorises food not by nutrients, but by the extent and purpose of industrial processing.</p>
+        <nav class="sticky top-16 z-40 bg-white/95 backdrop-blur border-y border-gray-200 mb-12 shadow-sm -mx-4 px-4 sm:mx-0 sm:rounded-lg sm:border sm:px-6">
+            <div class="flex space-x-8 overflow-x-auto no-scrollbar justify-center">
+                <button onclick="switchView('nova')" class="nav-tab active py-4 text-sm whitespace-nowrap">1. NOVA Definition</button>
+                <button onclick="switchView('data')" class="nav-tab py-4 text-sm whitespace-nowrap">2. Mortality Data</button>
+                <button onclick="switchView('body')" class="nav-tab py-4 text-sm whitespace-nowrap">3. Systemic Impact</button>
+                <button onclick="switchView('mechanisms')" class="nav-tab py-4 text-sm whitespace-nowrap">4. Mechanisms</button>
             </div>
+        </nav>
 
+        <section id="view-nova" class="view-section animate-fade-in">
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card p-6 border-t-4 border-t-green-500">
+                <div class="bg-white p-6 rounded-xl border border-gray-200 border-t-4 border-t-emerald-500 shadow-sm hover:shadow-md transition">
                     <div class="text-4xl mb-4">🍎</div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Group 1: Unprocessed</h3>
-                    <p class="text-xs text-gray-400 uppercase tracking-wide font-bold mb-3">Edible Parts of Plants</p>
-                    <p class="text-sm text-gray-600 mb-4">Fresh, frozen, or dried. The matrix of the food is intact.</p>
-                    <ul class="text-xs text-gray-500 list-disc list-inside">
+                    <h3 class="font-bold text-gray-900 mb-1">Group 1: Unprocessed</h3>
+                    <p class="text-xs text-emerald-600 font-semibold uppercase tracking-wide mb-3">Edible Plants/Animals</p>
+                    <p class="text-sm text-gray-600 mb-4">Fresh, frozen, or dried. The food matrix is intact.</p>
+                    <ul class="text-xs text-gray-500 list-disc list-inside space-y-1">
                         <li>Fresh Fruit & Veg</li>
                         <li>Plain Milk / Eggs</li>
                         <li>Raw Nuts</li>
                     </ul>
                 </div>
 
-                <div class="card p-6 border-t-4 border-t-yellow-500">
+                <div class="bg-white p-6 rounded-xl border border-gray-200 border-t-4 border-t-amber-400 shadow-sm hover:shadow-md transition">
                     <div class="text-4xl mb-4">🧂</div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Group 2: Culinary</h3>
-                    <p class="text-xs text-gray-400 uppercase tracking-wide font-bold mb-3">Extracted from Grp 1</p>
-                    <p class="text-sm text-gray-600 mb-4">Used in kitchens to season and cook Group 1 foods.</p>
-                    <ul class="text-xs text-gray-500 list-disc list-inside">
+                    <h3 class="font-bold text-gray-900 mb-1">Group 2: Culinary</h3>
+                    <p class="text-xs text-amber-600 font-semibold uppercase tracking-wide mb-3">Kitchen Ingredients</p>
+                    <p class="text-sm text-gray-600 mb-4">Used to season and cook Group 1 foods.</p>
+                    <ul class="text-xs text-gray-500 list-disc list-inside space-y-1">
                         <li>Butter & Oils</li>
                         <li>Sugar & Honey</li>
                         <li>Salt & Vinegar</li>
                     </ul>
                 </div>
 
-                <div class="card p-6 border-t-4 border-t-orange-500">
+                <div class="bg-white p-6 rounded-xl border border-gray-200 border-t-4 border-t-orange-500 shadow-sm hover:shadow-md transition">
                     <div class="text-4xl mb-4">🧀</div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Group 3: Processed</h3>
-                    <p class="text-xs text-gray-400 uppercase tracking-wide font-bold mb-3">Group 1 + Group 2</p>
-                    <p class="text-sm text-gray-600 mb-4">Simple preservation methods. Usually 2-3 ingredients.</p>
-                    <ul class="text-xs text-gray-500 list-disc list-inside">
+                    <h3 class="font-bold text-gray-900 mb-1">Group 3: Processed</h3>
+                    <p class="text-xs text-orange-600 font-semibold uppercase tracking-wide mb-3">Group 1 + Group 2</p>
+                    <p class="text-sm text-gray-600 mb-4">Simple preservation. Usually 2-3 ingredients.</p>
+                    <ul class="text-xs text-gray-500 list-disc list-inside space-y-1">
                         <li>Canned Vegetables</li>
                         <li>Fresh Bread</li>
                         <li>Cheese</li>
                     </ul>
                 </div>
 
-                <div class="card p-6 border-t-4 border-t-red-600 bg-red-50/50">
+                <div class="bg-red-50 p-6 rounded-xl border border-red-100 border-t-4 border-t-red-600 shadow-sm hover:shadow-md transition">
                     <div class="text-4xl mb-4">🥤</div>
-                    <h3 class="text-lg font-bold text-red-700 mb-2">Group 4: UPF</h3>
-                    <p class="text-xs text-red-400 uppercase tracking-wide font-bold mb-3">Industrial Formulations</p>
-                    <p class="text-sm text-gray-600 mb-4">Extracts & additives. Ingredients <strong>never</strong> found in a kitchen.</p>
-                    <ul class="text-xs text-gray-500 list-disc list-inside">
+                    <h3 class="font-bold text-red-900 mb-1">Group 4: UPF</h3>
+                    <p class="text-xs text-red-600 font-semibold uppercase tracking-wide mb-3">Industrial Formulations</p>
+                    <p class="text-sm text-red-800/80 mb-4">Extracts & additives. Ingredients <strong>never</strong> found in a kitchen.</p>
+                    <ul class="text-xs text-red-800/70 list-disc list-inside space-y-1">
                         <li>Soft Drinks</li>
                         <li>Packaged Snacks</li>
                         <li>Reconstituted Meat</li>
@@ -156,32 +170,38 @@
                 </div>
             </div>
             
-            <div class="mt-8 p-6 bg-slate-100 rounded-lg border-l-4 border-slate-500">
-                <h4 class="font-bold text-slate-800 mb-2">The "Matrix" Effect</h4>
-                <p class="text-sm text-slate-600">It is not just the nutrients (sugar/fat) that matter, but the <strong>food matrix</strong>. In Group 1 foods (e.g. an apple), sugar is bound within fibre cells, slowing digestion. In UPF, the matrix is destroyed, leading to rapid blood sugar spikes.</p>
+            <div class="mt-8 p-6 bg-white rounded-xl border border-gray-200 flex gap-4 shadow-sm">
+                <div class="shrink-0 text-indigo-600">
+                    <i data-lucide="info" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-1">The "Matrix" Effect</h4>
+                    <p class="text-sm text-gray-600">It is not just the nutrients (sugar/fat) that matter, but the <strong>food matrix</strong>. In Group 1 foods (e.g. an apple), sugar is bound within fibre cells, slowing digestion. In UPF, the matrix is destroyed, leading to rapid blood sugar spikes.</p>
+                </div>
             </div>
         </section>
 
-        <section id="view-data" class="view-section hidden">
-            <div class="max-w-4xl mx-auto mb-10 text-center">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">The Mortality Statistics</h2>
-                <p class="text-gray-600">
-                    Data from the BMJ and NutriNet-Santé cohorts establishes a strong dose-response relationship.
-                </p>
-            </div>
-
+        <section id="view-data" class="view-section hidden animate-fade-in">
             <div class="grid lg:grid-cols-2 gap-8 mb-12">
-                <div class="card p-6">
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">All-Cause Mortality Hazard</h3>
-                    <p class="text-xs text-gray-500 mb-6">Relative risk increase based on daily servings</p>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h3 class="font-bold text-gray-900">All-Cause Mortality Hazard</h3>
+                            <p class="text-xs text-gray-500">Relative risk increase based on daily servings</p>
+                        </div>
+                    </div>
                     <div class="chart-container">
                         <canvas id="mortalityChart"></canvas>
                     </div>
                 </div>
 
-                <div class="card p-6">
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">Disease Risk Multipliers</h3>
-                    <p class="text-xs text-gray-500 mb-6">Increased odds/risk (High vs Low Intake)</p>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h3 class="font-bold text-gray-900">Disease Risk Multipliers</h3>
+                            <p class="text-xs text-gray-500">Increased odds (High vs Low Intake)</p>
+                        </div>
+                    </div>
                     <div class="chart-container">
                         <canvas id="diseaseChart"></canvas>
                     </div>
@@ -189,51 +209,46 @@
             </div>
         </section>
 
-        <section id="view-body" class="view-section hidden">
-            <div class="max-w-3xl mx-auto text-center mb-10">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Systemic Impact</h2>
-                <p class="text-gray-600">Select a body system to reveal research findings.</p>
-            </div>
-
+        <section id="view-body" class="view-section hidden animate-fade-in">
             <div class="flex flex-col md:flex-row gap-8">
                 <div class="md:w-1/3 space-y-3">
-                    <button onclick="updateBodyInfo('brain')" class="w-full text-left p-4 rounded-lg bg-white border border-gray-200 hover:border-amber-400 hover:bg-amber-50 transition-all shadow-sm group flex items-center">
-                        <span class="text-2xl mr-3">🧠</span>
+                    <button onclick="updateBodyInfo('brain')" class="w-full text-left p-4 rounded-lg bg-white border border-gray-200 hover:border-indigo-500 hover:shadow-md transition-all group flex items-center">
+                        <span class="text-2xl mr-4 bg-gray-50 p-2 rounded-lg group-hover:bg-indigo-50 transition">🧠</span>
                         <div>
-                            <h4 class="font-bold text-gray-800">Brain & Mental Health</h4>
+                            <h4 class="font-bold text-gray-800 group-hover:text-indigo-600 transition">Brain & Mental Health</h4>
                             <p class="text-xs text-gray-500">Depression, Anxiety</p>
                         </div>
                     </button>
                     
-                    <button onclick="updateBodyInfo('heart')" class="w-full text-left p-4 rounded-lg bg-white border border-gray-200 hover:border-amber-400 hover:bg-amber-50 transition-all shadow-sm group flex items-center">
-                        <span class="text-2xl mr-3">❤️</span>
+                    <button onclick="updateBodyInfo('heart')" class="w-full text-left p-4 rounded-lg bg-white border border-gray-200 hover:border-indigo-500 hover:shadow-md transition-all group flex items-center">
+                        <span class="text-2xl mr-4 bg-gray-50 p-2 rounded-lg group-hover:bg-indigo-50 transition">❤️</span>
                         <div>
-                            <h4 class="font-bold text-gray-800">Cardiovascular</h4>
+                            <h4 class="font-bold text-gray-800 group-hover:text-indigo-600 transition">Cardiovascular</h4>
                             <p class="text-xs text-gray-500">Hypertension, CVD</p>
                         </div>
                     </button>
 
-                    <button onclick="updateBodyInfo('gut')" class="w-full text-left p-4 rounded-lg bg-white border border-gray-200 hover:border-amber-400 hover:bg-amber-50 transition-all shadow-sm group flex items-center">
-                        <span class="text-2xl mr-3">🦠</span>
+                    <button onclick="updateBodyInfo('gut')" class="w-full text-left p-4 rounded-lg bg-white border border-gray-200 hover:border-indigo-500 hover:shadow-md transition-all group flex items-center">
+                        <span class="text-2xl mr-4 bg-gray-50 p-2 rounded-lg group-hover:bg-indigo-50 transition">🦠</span>
                         <div>
-                            <h4 class="font-bold text-gray-800">Gut Microbiome</h4>
+                            <h4 class="font-bold text-gray-800 group-hover:text-indigo-600 transition">Gut Microbiome</h4>
                             <p class="text-xs text-gray-500">Dysbiosis, Inflammation</p>
                         </div>
                     </button>
 
-                    <button onclick="updateBodyInfo('metabolism')" class="w-full text-left p-4 rounded-lg bg-white border border-gray-200 hover:border-amber-400 hover:bg-amber-50 transition-all shadow-sm group flex items-center">
-                        <span class="text-2xl mr-3">⚖️</span>
+                    <button onclick="updateBodyInfo('metabolism')" class="w-full text-left p-4 rounded-lg bg-white border border-gray-200 hover:border-indigo-500 hover:shadow-md transition-all group flex items-center">
+                        <span class="text-2xl mr-4 bg-gray-50 p-2 rounded-lg group-hover:bg-indigo-50 transition">⚖️</span>
                         <div>
-                            <h4 class="font-bold text-gray-800">Metabolism</h4>
+                            <h4 class="font-bold text-gray-800 group-hover:text-indigo-600 transition">Metabolism</h4>
                             <p class="text-xs text-gray-500">Obesity, Diabetes</p>
                         </div>
                     </button>
                 </div>
 
-                <div class="md:w-2/3 card p-8 relative min-h-[300px]">
+                <div class="md:w-2/3 bg-white rounded-xl border border-gray-200 p-8 relative min-h-[400px] shadow-sm">
                     <div id="body-content-placeholder" class="h-full flex flex-col justify-center items-center text-center text-gray-400">
-                        <i data-lucide="mouse-pointer-click" class="w-10 h-10 mb-2 opacity-50"></i>
-                        <p>Select a system on the left.</p>
+                        <i data-lucide="mouse-pointer-click" class="w-12 h-12 mb-4 opacity-50"></i>
+                        <p class="font-medium">Select a biological system to reveal impacts.</p>
                     </div>
                     
                     <div id="body-content-display" class="hidden animate-fade-in">
@@ -242,18 +257,22 @@
                             <h3 id="display-title" class="text-2xl font-bold text-gray-900"></h3>
                         </div>
                         
-                        <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-6">
-                            <p id="display-stat" class="font-bold text-amber-900 italic"></p>
+                        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8 rounded-r-lg">
+                            <p id="display-stat" class="font-bold text-red-900 italic"></p>
                         </div>
 
-                        <div class="space-y-4">
+                        <div class="space-y-6">
                             <div>
-                                <h5 class="font-semibold text-gray-800 uppercase text-xs tracking-wider">The Mechanism</h5>
-                                <p id="display-mechanism" class="text-gray-600 text-sm leading-relaxed mt-1"></p>
+                                <h5 class="flex items-center gap-2 font-bold text-gray-900 text-sm uppercase tracking-wider mb-2">
+                                    <i data-lucide="settings-2" class="w-4 h-4 text-indigo-500"></i> The Mechanism
+                                </h5>
+                                <p id="display-mechanism" class="text-gray-600 text-sm leading-relaxed pl-6 border-l-2 border-gray-100"></p>
                             </div>
                             <div>
-                                <h5 class="font-semibold text-gray-800 uppercase text-xs tracking-wider">Key Study Finding</h5>
-                                <p id="display-study" class="text-gray-600 text-sm leading-relaxed mt-1"></p>
+                                <h5 class="flex items-center gap-2 font-bold text-gray-900 text-sm uppercase tracking-wider mb-2">
+                                    <i data-lucide="file-text" class="w-4 h-4 text-indigo-500"></i> Key Study Finding
+                                </h5>
+                                <p id="display-study" class="text-gray-600 text-sm leading-relaxed pl-6 border-l-2 border-gray-100"></p>
                             </div>
                         </div>
                     </div>
@@ -261,27 +280,22 @@
             </div>
         </section>
 
-        <section id="view-mechanisms" class="view-section hidden">
-            <div class="max-w-3xl mx-auto text-center mb-10">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Under the Microscope</h2>
-                <p class="text-gray-600">Why are these foods harmful? It is not just "empty calories." It is about how industrial ingredients interact with biology.</p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-8 mb-12">
-                <div class="card overflow-hidden">
-                    <div class="bg-green-50 p-4 border-b border-green-100">
-                        <h3 class="font-bold text-green-900 flex items-center gap-2">
+        <section id="view-mechanisms" class="view-section hidden animate-fade-in">
+            <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                    <div class="bg-emerald-50 p-4 border-b border-emerald-100">
+                        <h3 class="font-bold text-emerald-900 flex items-center gap-2">
                             🦠 The Microbiome Disruption
                         </h3>
                     </div>
                     <div class="p-6">
-                        <p class="text-sm text-gray-600 mb-4">
+                        <p class="text-sm text-gray-600 leading-relaxed">
                             A healthy gut relies on fibre to produce Short-Chain Fatty Acids (SCFAs) which reduce inflammation. UPFs are typically low-fibre and contain emulsifiers that can strip the gut's protective mucus layer.
                         </p>
                     </div>
                 </div>
 
-                <div class="card overflow-hidden">
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
                     <div class="bg-blue-50 p-4 border-b border-blue-100">
                         <h3 class="font-bold text-blue-900 flex items-center gap-2">
                             🧪 Ingredient Decoder
@@ -291,14 +305,14 @@
                         <div class="p-4 hover:bg-gray-50 transition">
                             <div class="flex justify-between items-center mb-1">
                                 <span class="font-bold text-gray-700 text-sm">Emulsifiers (CMC, P80)</span>
-                                <span class="text-xs bg-gray-200 px-2 py-1 rounded">Texture</span>
+                                <span class="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-0.5 rounded uppercase">Texture</span>
                             </div>
                             <p class="text-xs text-gray-500">Linked to erosion of gut mucosal barrier ("leaky gut").</p>
                         </div>
                         <div class="p-4 hover:bg-gray-50 transition">
                             <div class="flex justify-between items-center mb-1">
                                 <span class="font-bold text-gray-700 text-sm">Maltodextrin</span>
-                                <span class="text-xs bg-gray-200 px-2 py-1 rounded">Thickener</span>
+                                <span class="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-0.5 rounded uppercase">Thickener</span>
                             </div>
                             <p class="text-xs text-gray-500">Spikes blood sugar faster than table sugar; alters gut bacteria.</p>
                         </div>
@@ -306,9 +320,9 @@
                 </div>
             </div>
             
-            <div class="bg-slate-900 rounded-xl p-8 text-center text-white">
-                <h3 class="text-2xl font-bold mb-2">The Takeaway</h3>
-                <p class="max-w-2xl mx-auto text-slate-400 mb-6">
+            <div class="bg-amber-50 rounded-xl p-8 text-center border border-amber-100 shadow-sm">
+                <h3 class="text-xl font-bold mb-2 text-amber-900">The Takeaway</h3>
+                <p class="max-w-2xl mx-auto text-amber-800/80 text-sm">
                     Research suggests that the harm comes not just from what is <em>in</em> UPF (sugar/additives), but what is <em>missing</em> (structure, fibre, micronutrients).
                 </p>
             </div>
@@ -316,10 +330,30 @@
 
     </main>
 
-    <footer class="bg-white border-t border-gray-200 mt-12 py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center text-gray-400 text-xs font-mono">
-            <p class="mb-2"><strong>Primary Sources:</strong> The BMJ (2019/2024), The Lancet, NIH, World Cancer Research Fund.</p>
-            <p>Generated by Rawat Labs • 2025</p>
+    <footer class="bg-white border-t border-gray-200 py-10">
+        <div class="container mx-auto px-6 flex flex-col items-center gap-6">
+
+            <div class="flex gap-8 opacity-60 hover:opacity-100 transition-opacity">
+                <a href="https://youtube.com/@airawatraj" target="_blank" title="YouTube" class="hover:text-red-600 transition">
+                    <i data-lucide="youtube" width="20" height="20"></i>
+                </a>
+                <a href="https://github.com/airawatraj" target="_blank" title="GitHub" class="hover:text-black transition">
+                    <i data-lucide="github" width="20" height="20"></i>
+                </a>
+                <a href="https://kaggle.com/airawatraj" target="_blank" title="Kaggle" class="hover:text-blue-500 transition">
+                    <i data-lucide="database" width="20" height="20"></i>
+                </a>
+            </div>
+
+            <div class="text-center">
+                <p class="font-bold text-sm tracking-tight text-gray-900 mb-1">RAWAT LABS</p>
+                <p class="text-xs text-gray-500 font-mono">Amplifying Consciousness</p>
+            </div>
+            
+            <div class="text-[10px] text-gray-400 text-center">
+                <p class="mb-2"><strong>Primary Sources:</strong> The BMJ (2019/2024), The Lancet, NIH, World Cancer Research Fund.</p>
+                <p>&copy; 2025 RAWAT LABS. Melbourne, Australia.</p>
+            </div>
         </div>
     </footer>
 
@@ -370,10 +404,10 @@
             document.getElementById(`view-${viewId}`).classList.remove('hidden');
 
             // Update Nav Buttons
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(btn => btn.classList.remove('active'));
             // Activate current
             const btnIndex = ['nova', 'data', 'body', 'mechanisms'].indexOf(viewId);
-            if(btnIndex >= 0) document.querySelectorAll('.nav-btn')[btnIndex].classList.add('active');
+            if(btnIndex >= 0) document.querySelectorAll('.nav-tab')[btnIndex].classList.add('active');
 
             // Trigger charts if needed
             if (viewId === 'data') renderCharts();
@@ -395,9 +429,13 @@
             document.getElementById('display-study').innerText = data.study;
         }
 
-        // --- Chart.js Implementation ---
+        // --- Chart.js Implementation (Swiss Style) ---
         let mortalityChartInstance = null;
         let diseaseChartInstance = null;
+
+        Chart.defaults.color = '#64748B'; // Slate-500
+        Chart.defaults.font.family = 'Inter';
+        Chart.defaults.borderColor = '#E2E8F0'; // Gray-200
 
         function renderCharts() {
             if (mortalityChartInstance) return; // Prevent re-render
@@ -413,7 +451,7 @@
                     datasets: [{
                         label: 'Relative Mortality Hazard Ratio',
                         data: [1.0, 1.18, 1.44, 1.62],
-                        backgroundColor: ['#10B981', '#FBBF24', '#F97316', '#EF4444'],
+                        backgroundColor: ['#10B981', '#FBBF24', '#F97316', '#EF4444'], // Emerald to Red
                         borderRadius: 4
                     }]
                 },
@@ -421,7 +459,10 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
-                    scales: { y: { beginAtZero: true, title: { display: true, text: 'Hazard Ratio (1.0 = Baseline)' } } }
+                    scales: { 
+                        y: { beginAtZero: true, title: { display: true, text: 'Hazard Ratio (1.0 = Baseline)' } },
+                        x: { grid: { display: false } }
+                    }
                 }
             });
 
@@ -433,7 +474,7 @@
                     datasets: [{
                         label: 'Risk Increase (%)',
                         data: [48, 45, 40, 12, 12],
-                        backgroundColor: '#D97706',
+                        backgroundColor: '#D97706', // Amber-600
                         borderRadius: 4
                     }]
                 },
@@ -442,7 +483,10 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
-                    scales: { x: { beginAtZero: true, title: { display: true, text: '% Increase in Risk' } } }
+                    scales: { 
+                        x: { beginAtZero: true, title: { display: true, text: '% Increase in Risk' } },
+                        y: { grid: { display: false } }
+                    }
                 }
             });
         }
