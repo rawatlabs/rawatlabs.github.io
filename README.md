@@ -1,4 +1,4 @@
-### ⚡ Amplifying Consciousness through Silicon & Soul.
+### ⚡ Amplifying Consciousness
 
 **RAWAT LABS** is a Truth Lab dedicated to building the infrastructure for a more conscious world.
 
