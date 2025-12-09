@@ -48,22 +48,34 @@
 </head>
 <body class="antialiased selection:bg-cyan-500 selection:text-white">
 
-    <!-- Header / Minimal Title -->
-    <header class="py-6 px-4 text-center bg-gradient-to-b from-slate-900 to-slate-800 border-b border-slate-700">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
-                Agentic AI Frameworks & Languages
-            </h1>
+    <header class="bg-gradient-to-b from-slate-900 to-slate-800 border-b border-slate-700">
+        <div class="px-4 py-3 md:px-8 flex justify-between items-center border-b border-slate-700/50">
+            <a href="../index.html" class="text-slate-400 hover:text-white text-sm font-medium transition-colors flex items-center gap-2 group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                Back to Lab
+            </a>
+            
+            <a href="20251209-RL1 Agentic AI Frameworks Research Report.pdf" download class="flex items-center gap-2 px-3 py-1.5 bg-slate-700/50 hover:bg-slate-700 text-cyan-400 hover:text-cyan-300 text-xs md:text-sm font-semibold rounded-lg transition-all border border-slate-600 hover:border-cyan-500/50">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                <span class="hidden md:inline">Download Research Report (PDF)</span>
+                <span class="md:hidden">PDF Report</span>
+            </a>
+        </div>
+
+        <div class="py-8 px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
+                    Agentic AI Frameworks & Languages
+                </h1>
+            </div>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-4 space-y-8">
         
-        <!-- Section: Frameworks and Ecosystems (Consolidated) -->
         <section>
             <h2 class="text-2xl font-bold text-white mb-4 text-center">Language & Framework Ecosystems</h2>
             
-            <!-- Consolidated Table (Replaces the 3 cards and the previous table) -->
             <div class="card p-4">
                  <strong class="text-violet-400 block mb-3 text-lg font-semibold border-b border-slate-700 pb-2">Primary Frameworks by Language & Deployment Risk</strong>
                 <div class="overflow-x-auto">
@@ -96,7 +108,6 @@
                 </div>
             </div>
 
-            <!-- Pydantic Callout -->
             <div class="mt-4 p-4 bg-yellow-900/50 rounded-lg border-l-4 border-yellow-400">
                 <strong class="text-yellow-400 block mb-1">Critical Tool: Pydantic & Structured Output</strong>
                 <p class="text-xs text-slate-300">
@@ -104,7 +115,6 @@
                 </p>
             </div>
             
-            <!-- Vendor Lock-in Callout (NEW) -->
             <div class="mt-4 p-4 bg-red-900/50 rounded-lg border-l-4 border-red-400">
                 <strong class="text-red-400 block mb-1">Vendor Lock-in Context</strong>
                 <p class="text-xs text-slate-300">
@@ -114,15 +124,13 @@
             </div>
         </section>
 
-        <!-- Section: Framework Capabilities (Charts) -->
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div class="card p-4">
                 <h3 class="text-lg font-bold text-white mb-2 text-center">Framework Popularity (Adoption Score)</h3>
                 <div class="chart-container">
                     <canvas id="marketShareChart"></canvas>
                 </div>
-                 <!-- Chart 1 Legend -->
-                <div class="flex flex-wrap justify-center space-x-4 text-xs mt-2 pt-2 border-t border-slate-700">
+                 <div class="flex flex-wrap justify-center space-x-4 text-xs mt-2 pt-2 border-t border-slate-700">
                     <div class="flex items-center text-slate-300">
                         <span class="inline-block w-2 h-2 rounded-full mr-1" style="background-color: #10b981;"></span> 
                         Google (Vertex AI)
@@ -202,7 +210,6 @@
         
         // --- Chart 1: Market Share (Horizontal Bar) ---
         const ctxMarket = document.getElementById('marketShareChart').getContext('2d');
-        // Cleaned labels (color association is handled by the legend below the graph)
         const marketLabels = [
             'LangChain/Graph', 
             'Vertex AI', 
@@ -280,7 +287,7 @@
                         pointBackgroundColor: '#3b82f6',
                         borderWidth: 2
                     },
-                     {
+                      {
                         label: 'Vertex AI (Google)', 
                         data: [55, 65, 90, 95, 98], 
                         borderColor: '#10b981', 
@@ -313,8 +320,6 @@
                 }
             }
         });
-        
-        // --- Dummy Plotly chart function removal (not needed for minimal view) ---
         
     </script>
 </body>
