@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rawat Labs | The Truth Lab</title>
+    <title>RAWAT LABS | The Truth Lab</title>
     <meta name="description"
-        content="Navigating the disruption of AI by exploring our inner world (Consciousness) and mastering our outer world.">
+        content="Navigating the disruption of AI by exploring our inner world (Consciousness) and mastering our relationship with the outer world.">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -128,7 +128,7 @@
     <header class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-200 z-50">
         <div class="container mx-auto px-6 h-16 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <img src="assets/rawatlabs-logo.png" alt="Rawat Labs Logo" class="w-8 h-8">
+                <img src="assets/rawatlabs-logo.png" alt="RAWAT LABS Logo" class="w-8 h-8">
                 <span class="font-bold text-lg tracking-tight">RAWAT LABS</span>
             </div>
 
@@ -136,12 +136,23 @@
                 <a href="#mission" class="nav-item">The Mission</a>
                 <a href="#wave" class="nav-item">The Wave</a>
                 <a href="#framework" class="nav-item">The Framework</a>
+                <a href="#tools" class="nav-item">The Ecosystem</a>
                 <a href="#research" class="nav-item">Research Library</a>
             </nav>
 
-            <button class="md:hidden text-gray-600">
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-black transition-colors">
                 <i data-lucide="menu"></i>
             </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 shadow-lg">
+            <div class="flex flex-col p-6 space-y-4 text-center">
+                <a href="#mission" class="text-gray-600 hover:text-black font-medium" onclick="closeMenu()">The Mission</a>
+                <a href="#wave" class="text-gray-600 hover:text-black font-medium" onclick="closeMenu()">The Wave</a>
+                <a href="#framework" class="text-gray-600 hover:text-black font-medium" onclick="closeMenu()">The Framework</a>
+                <a href="#tools" class="text-gray-600 hover:text-black font-medium" onclick="closeMenu()">The Ecosystem</a>
+                <a href="#research" class="text-gray-600 hover:text-black font-medium" onclick="closeMenu()">Research Library</a>
+            </div>
         </div>
     </header>
 
@@ -152,13 +163,12 @@
                 The Last Human Frontier is Within
             </h1>
             <p class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-8">
-                We stand at the precipice of a new age, defined by Artificial General Intelligence. This wave of change
+                We stand at the precipice of a new age defined by Artificial General Intelligence. This wave of change
                 will automate cognitive labour, just as the industrial revolution automated physical labour.
             </p>
             <p class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-                Our mission is to provide a framework for navigating this disruption—not by competing with machines, but
-                by turning inward to explore our consciousness and mastering our relationship with the outer world
-                (<span class="italic">Maya</span>). It's time to become more human, not more machine.
+                Our mission is to provide a framework for navigating this disruption. Not by competing with machines, but
+                by turning inward to explore our consciousness and mastering our relationship with the outer world. It is time to become more human, not more machine.
             </p>
         </section>
 
@@ -168,7 +178,7 @@
                     <h2 class="text-3xl font-bold text-gray-900 mb-4">The Coming Wave: The Shift to Conscious Work</h2>
                     <p class="text-gray-600 max-w-2xl mx-auto">
                         The AI revolution is re-assigning tasks. Routine cognitive work is being delegated to AI,
-                        making our uniquely human abilities—wisdom, ethical discernment, and conscious creation—the most
+                        making our uniquely human abilities (wisdom, ethical discernment, and conscious creation) the most
                         valuable skills.
                     </p>
                 </div>
@@ -194,7 +204,7 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Navigating the Inner World (Consciousness)</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">
-                    Before we can build a better world, we must understand the architect: our own mind. A balanced mind
+                    Before we can build a better world, we must understand the architect. Our own mind. A balanced mind
                     is the ultimate tool for navigating complexity.
                 </p>
             </div>
@@ -205,8 +215,8 @@
                     <h3 class="text-lg font-bold mb-3">Mind (Clarity & Focus)</h3>
                     <p class="text-sm text-gray-600 leading-relaxed">
                         <strong class="block text-gray-900 mb-1">The Practice:</strong> Start with 10 minutes of
-                        mindfulness meditation daily. Focus on the sensation of your breath. When your mind wanders—and
-                        it will—gently guide it back. This builds the muscle of focus.
+                        mindfulness meditation daily. Focus on the sensation of your breath. When your mind wanders (and
+                        it will) gently guide it back. This builds the muscle of focus.
                     </p>
                 </div>
 
@@ -232,9 +242,9 @@
             </div>
 
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Navigating the Outer World (Maya)</h2>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Navigating the Outer World (The Illusion)</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">
-                    "Maya" is the world of appearances. The AI age will amplify distractions. Thriving requires wise
+                    The modern world is an "Illusion" of appearances, distractions, and materialism. The AI age will amplify distractions. Thriving requires wise
                     engagement.
                 </p>
             </div>
@@ -257,57 +267,126 @@
             </div>
         </section>
 
-        <section id="research" class="bg-slate-50 py-20 border-t border-gray-200">
-            <div class="container mx-auto px-6 max-w-4xl">
-                <div class="flex items-center justify-between mb-10">
-                    <h2 class="text-2xl font-bold text-gray-900">Research Library</h2>
-                    <span class="text-xs font-mono text-gray-500 uppercase">Latest Publications</span>
+        <section id="tools" class="bg-slate-50 border-y border-gray-200 py-20">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">The Toolset</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        Theory is useless without practice. We are building the technological companions required for this journey. 
+                    </p>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-
-                    <a href="/research/agentic-frameworks.html"
-                        class="block p-6 border-b border-gray-100 hover:bg-gray-50 transition group">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-lg text-gray-800 group-hover:text-blue-600 transition">Comparative
-                                Analysis of Agentic AI Frameworks</h3>
-                            <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded">TECH</span>
+                <div class="bg-white rounded-xl p-8 border border-dashed border-indigo-300 shadow-sm mb-12 relative overflow-hidden group hover:border-indigo-500 transition-colors">
+                    <div class="absolute top-0 right-0 bg-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
+                        The North Star (Vision)
+                    </div>
+                    <div class="md:flex items-start gap-6">
+                        <div class="w-16 h-16 bg-indigo-50 rounded-lg flex items-center justify-center text-2xl mb-4 md:mb-0 shrink-0">
+                            👁️
                         </div>
-                        <p class="text-sm text-gray-600 mb-3">
-                            Evaluating AutoGen, LangChain, and Custom Python Governance for enterprise reliability. Why
-                            deterministic "Hands" are crucial for "Generative" Brains.
-                        </p>
-                        <div class="text-xs text-gray-400 font-mono">Dec 2025 • Rawat Labs • 15 min read</div>
-                    </a>
-
-                    <a href="/research/upf-impact.html"
-                        class="block p-6 border-b border-gray-100 hover:bg-gray-50 transition group">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-lg text-gray-800 group-hover:text-green-600 transition">The
-                                Metabolic Cost of Ultra-Processed Foods (UPF)</h3>
-                            <span class="text-xs font-bold bg-green-100 text-green-800 px-2 py-1 rounded">BODY</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Cogni.chat</h3>
+                            <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                                The ultimate goal. A unified, multimodal agent acting as a bridge between your digital life (Mind) and physical reality (Body). It serves as an extension of your intent, combining the power of all tools below into a single intelligence that automates the mechanical so you can inhabit the spiritual.
+                            </p>
+                            <a href="https://cogni.chat" target="_blank" class="inline-flex items-center text-sm font-semibold text-indigo-600 hover:text-indigo-800">
+                                View the Product Vision <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
                         </div>
-                        <p class="text-sm text-gray-600 mb-3">
-                            A review of how industrial additives disrupt the gut-brain axis, reducing cognitive clarity
-                            required for deep work.
-                        </p>
-                        <div class="text-xs text-gray-400 font-mono">Nov 2025 • Airawat • 10 min read</div>
-                    </a>
-
-                    <a href="/research/digital-minimalism.html" class="block p-6 hover:bg-gray-50 transition group">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-lg text-gray-800 group-hover:text-purple-600 transition">Attention
-                                as Currency: The "Time Shield" Protocol</h3>
-                            <span class="text-xs font-bold bg-purple-100 text-purple-800 px-2 py-1 rounded">MIND</span>
-                        </div>
-                        <p class="text-sm text-gray-600 mb-3">
-                            Technical breakdown of the Cogni Time Shield extension and the psychology of flow state
-                            preservation in a notification-heavy world.
-                        </p>
-                        <div class="text-xs text-gray-400 font-mono">Oct 2025 • Rawat Labs • 8 min read</div>
-                    </a>
-
+                    </div>
                 </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg border border-gray-200">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-800">Cogni Time Shield</h4>
+                            <span class="text-xs font-mono bg-gray-100 px-2 py-1 rounded">MIND</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">
+                            A browser extension to defend your most precious asset. Your attention. It enforces mindful pauses before you doom-scroll.
+                        </p>
+                        <span class="text-xs text-green-600 font-medium">● Functional Prototype</span>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg border border-gray-200">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-800">Cogni Prajna</h4>
+                            <span class="text-xs font-mono bg-gray-100 px-2 py-1 rounded">SPIRIT</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">
+                            A distraction-free tablet interface dedicated solely to meditation, journaling, and deep reading.
+                        </p>
+                        <span class="text-xs text-orange-600 font-medium">● In Development</span>
+                    </div>
+
+                     <div class="bg-white p-6 rounded-lg border border-gray-200">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-800">FoodWise AR</h4>
+                            <span class="text-xs font-mono bg-gray-100 px-2 py-1 rounded">BODY</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">
+                            Computer vision for the grocery aisle. Instantly analyses ingredients to flag Ultra-Processed Foods (UPF) against vitality principles.
+                        </p>
+                        <span class="text-xs text-green-600 font-medium">● Functional Prototype</span>
+                    </div>
+                </div>
+                
+                <p class="text-center text-xs text-gray-400 mt-8 italic">
+                    "These are the puzzle pieces. We are currently forging them individually to one day assemble the whole."
+                </p>
+
+            </div>
+        </section>
+
+        <section id="research" class="container mx-auto px-6 section-padding max-w-4xl">
+            <div class="flex items-center justify-between mb-10 border-b border-gray-200 pb-4">
+                <h2 class="text-2xl font-bold text-gray-900">Research Library</h2>
+                <span class="text-xs font-mono text-gray-500 uppercase">Latest Publications</span>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+
+                <a href="/research/agentic-frameworks.html"
+                    class="block p-6 border-b border-gray-100 hover:bg-gray-50 transition group">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-gray-800 group-hover:text-blue-600 transition">Comparative
+                            Analysis of Agentic AI Frameworks</h3>
+                        <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded">TECH</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Evaluating AutoGen, LangChain, and Custom Python Governance for enterprise reliability. Why
+                        deterministic "Hands" are crucial for "Generative" Brains.
+                    </p>
+                    <div class="text-xs text-gray-400 font-mono">Dec 2025 • RAWAT LABS • 15 min read</div>
+                </a>
+
+                <a href="/research/upf-impact.html"
+                    class="block p-6 border-b border-gray-100 hover:bg-gray-50 transition group">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-gray-800 group-hover:text-green-600 transition">The
+                            Metabolic Cost of Ultra-Processed Foods (UPF)</h3>
+                        <span class="text-xs font-bold bg-green-100 text-green-800 px-2 py-1 rounded">BODY</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">
+                        A review of how industrial additives disrupt the gut-brain axis, reducing cognitive clarity
+                        required for deep work.
+                    </p>
+                    <div class="text-xs text-gray-400 font-mono">Nov 2025 • Airawat • 10 min read</div>
+                </a>
+
+                <a href="/research/digital-minimalism.html" class="block p-6 hover:bg-gray-50 transition group">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-gray-800 group-hover:text-purple-600 transition">Attention
+                            as Currency: The "Time Shield" Protocol</h3>
+                        <span class="text-xs font-bold bg-purple-100 text-purple-800 px-2 py-1 rounded">MIND</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Technical breakdown of the Cogni Time Shield extension and the psychology of flow state
+                        preservation in a notification-heavy world.
+                    </p>
+                    <div class="text-xs text-gray-400 font-mono">Oct 2025 • RAWAT LABS • 8 min read</div>
+                </a>
+
             </div>
         </section>
     </main>
@@ -328,7 +407,7 @@
             </div>
 
             <p class="text-xs text-gray-400 font-mono">
-                &copy; 2025 Rawat Labs. A framework for a more conscious world.
+                &copy; 2025 RAWAT LABS. A framework for a more conscious world.
             </p>
         </div>
     </footer>
@@ -336,6 +415,19 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // --- MOBILE MENU LOGIC ---
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu when a link is clicked
+        function closeMenu() {
+            mobileMenu.classList.add('hidden');
+        }
 
         // --- CHART DATA ---
         const chartData = {
