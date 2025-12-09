@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en-AU" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attention Economy: The Psychology of Flow | RAWAT LABS</title>
+    <meta name="description" content="Research report on Attention Economy, Flow State Neurochemistry, and the cost of distraction.">
+    
+    <link rel="icon" type="image/x-icon" href="../assets/rawatlabs-logo.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RAWAT LABS DESIGN SYSTEM --- */
+        :root {
+            --ink: #111111;
+            --slate: #64748B;
+            --highlight: #4F46E5; /* Indigo-600 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAFAFA;
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Subtle Grid for Scientific Feel */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+                linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
+            opacity: 0.4;
+        }
+
+        /* Chart Container Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            height: 400px;
+            max-height: 400px;
+            margin: 0 auto 2rem auto;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+                max-height: 300px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Card Interactions */
+        .info-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #4F46E5; /* Indigo accent */
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <div class="fixed inset-0 bg-grid -z-10 pointer-events-none"></div>
+
+    <header class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50">
+        <div class="container mx-auto px-6 h-16 flex justify-between items-center">
+            
+            <a href="#" class="flex items-center gap-2 group">
+                <img src="../assets/rawatlabs-logo.png" alt="RAWAT LABS Logo" class="w-8 h-8">
+                <span class="font-bold text-lg tracking-tight group-hover:text-indigo-600 transition-colors">RAWAT LABS</span>
+            </a>
+
+            <div class="hidden md:flex space-x-6">
+                <button onclick="scrollToSection('hero')" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition">Overview</button>
+                <button onclick="scrollToSection('market')" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition">The Market</button>
+                <button onclick="scrollToSection('neuro')" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition">Psychology</button>
+                <button onclick="scrollToSection('cost')" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition">Your Cost</button>
+            </div>
+
+            <div class="flex items-center gap-4">
+                 <a href="20251209-RL3 Attention is new Currency - Psychology of Flow Preservation Report.pdf" download class="flex items-center gap-2 px-4 py-2 text-xs font-semibold bg-indigo-50 text-indigo-700 hover:bg-indigo-100 rounded-lg transition border border-indigo-200">
+                    <i data-lucide="download" class="w-4 h-4"></i> PDF Report
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24 pb-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+
+        <section id="hero" class="min-h-[60vh] flex flex-col justify-center items-center text-center space-y-6 animate-fade-in section-padding">
+            <div class="inline-block px-3 py-1 bg-indigo-50 border border-indigo-100 rounded-full mb-4">
+                <span class="text-xs font-semibold text-indigo-700 tracking-wider uppercase">Research Report RL2: Attention Economy</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 tracking-tight leading-tight max-w-4xl">
+                Attention is the New <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-indigo-800">Currency</span>
+            </h1>
+            
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                In an economy defined by notifications, the ability to preserve "Flow State" is the ultimate competitive advantage. We analyse the cost of distraction and the neurochemistry of focus.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 w-full max-w-4xl">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="text-4xl font-bold text-red-500 mb-2">23m</div>
+                    <div class="text-sm text-gray-500 font-medium">To Refocus after Distraction</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="text-4xl font-bold text-gray-800 mb-2">47s</div>
+                    <div class="text-sm text-gray-500 font-medium">Avg. Screen Focus Duration</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="text-4xl font-bold text-emerald-600 mb-2">500%</div>
+                    <div class="text-sm text-gray-500 font-medium">Productivity in Flow State</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="market" class="border-t border-gray-200 pt-16">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-4 space-y-6">
+                    <h2 class="text-3xl font-bold text-gray-900">The Inflation of Distraction</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Just as inflation devalues currency, information overload devalues attention. This section analyses the historical degradation of average attention spans on digital interfaces.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Data collected over two decades suggests a correlation between the rise of infinite-scroll interfaces ("Doomscrolling") and the fragmentation of cognitive continuity.
+                    </p>
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
+                        <h4 class="font-bold text-indigo-900 mb-2 flex items-center gap-2">
+                            <i data-lucide="zap" class="w-4 h-4"></i> Key Insight
+                        </h4>
+                        <p class="text-sm text-indigo-800">The "Goldfish Myth" (8s attention span) is debated, but the <i>switching frequency</i> between tasks has objectively increased by 300% since 2004.</p>
+                    </div>
+                </div>
+                <div class="md:col-span-8">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-semibold text-gray-700">Average Focus Duration (Seconds)</h3>
+                            <div class="text-xs text-gray-400">Source: University of California, Irvine</div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="attentionTrendChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="neuro" class="pt-16">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">The Neurochemistry of the "Scroll"</h2>
+                <p class="text-gray-600">
+                    Why is it hard to stop? The brain reacts differently to "Flow" (deep work) versus "Doomscrolling" (passive consumption). Understanding this chemical battle is key to regaining control.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 order-2 md:order-1">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-gray-900">Neurotransmitter Profiles</h3>
+                        <i data-lucide="radar" class="w-5 h-5 text-gray-400"></i>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="neuroChart"></canvas>
+                    </div>
+                    <div class="flex justify-center gap-4 mt-4">
+                        <button onclick="updateNeuroChart('flow')" class="px-4 py-2 text-sm bg-emerald-50 text-emerald-700 rounded-lg hover:bg-emerald-100 transition border border-emerald-100">Show Flow State</button>
+                        <button onclick="updateNeuroChart('scroll')" class="px-4 py-2 text-sm bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition border border-red-100">Show Doomscroll</button>
+                        <button onclick="updateNeuroChart('both')" class="px-4 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition border border-gray-200">Compare Both</button>
+                    </div>
+                </div>
+
+                <div class="space-y-6 order-1 md:order-2">
+                    <div id="neuro-text-container" class="space-y-4">
+                        <div class="p-6 bg-white border-l-4 border-emerald-600 rounded-r-lg shadow-sm border-t border-r border-b border-gray-100">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">🧠 The Flow State</h3>
+                            <p class="text-gray-600 mb-3">Characterised by <strong>Norepinephrine</strong> (focus) and <strong>Anandamide</strong> (novelty). High satisfaction, low anxiety.</p>
+                            <ul class="text-sm text-gray-500 space-y-2">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Time dilation (time flies)</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Loss of self-consciousness</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Peak cognitive performance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cost" class="bg-gray-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-20 mt-12 border-y border-gray-200">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-10">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Calculate Your "Switching Cost"</h2>
+                    <p class="text-gray-600 max-w-2xl">
+                        Research shows it takes an average of <strong>23 minutes and 15 seconds</strong> to get back on task after a meaningful interruption. Use the slider below to see how notifications impact an 8-hour workday.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-4 bg-white p-8 rounded-2xl shadow-sm border border-gray-200 h-fit">
+                        <label class="block text-sm font-bold text-gray-700 mb-4">
+                            Interruptions per Hour
+                        </label>
+                        <div class="flex items-center gap-4 mb-6">
+                            <span class="text-2xl font-bold text-gray-900" id="interruptions-display">1</span>
+                            <span class="text-sm text-gray-400">/ hr</span>
+                        </div>
+                        <input type="range" id="interruption-slider" min="0" max="10" step="1" value="1" 
+                               class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 mb-8">
+                        
+                        <div class="space-y-4 pt-6 border-t border-gray-100">
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Raw Work Time</span>
+                                <span class="font-medium text-gray-800">8.0 hrs</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-red-500">Fragmentation Cost</span>
+                                <span class="font-bold text-red-500" id="lost-time-display">0.4 hrs</span>
+                            </div>
+                            <div class="flex justify-between pt-2 border-t border-gray-100">
+                                <span class="font-bold text-gray-800">Effective Deep Work</span>
+                                <span class="font-bold text-emerald-600 text-xl" id="deep-work-display">7.6 hrs</span>
+                            </div>
+                        </div>
+                        
+                        <p class="text-xs text-gray-400 mt-6 italic">
+                            *Calculation assumes a variable recovery period (15-23 mins) that degrades as fatigue sets in.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-8">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                            <h3 class="font-semibold text-gray-700 mb-6">Visualising Your Work Day</h3>
+                            <div class="chart-container">
+                                <canvas id="costChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategies" class="py-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Preserving the Flow State</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="info-card bg-white p-6 rounded-xl border border-gray-200 shadow-sm cursor-pointer" onclick="toggleStrategy(this)">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="text-indigo-600"><i data-lucide="shield" class="w-8 h-8"></i></div>
+                        <div class="text-gray-300 transform transition-transform duration-300">▼</div>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Environmental Shielding</h3>
+                    <p class="text-gray-600 text-sm mb-4">Physical barriers to digital entry.</p>
+                    <div class="hidden-content hidden text-sm text-gray-500 space-y-2 border-t border-gray-100 pt-3">
+                        <p>• Phone in another room (creates friction).</p>
+                        <p>• Full-screen mode always.</p>
+                        <p>• Noise-canceling headphones as a visual "Do Not Disturb" signal.</p>
+                    </div>
+                </div>
+
+                <div class="info-card bg-white p-6 rounded-xl border border-gray-200 shadow-sm cursor-pointer" onclick="toggleStrategy(this)">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="text-indigo-600"><i data-lucide="clock" class="w-8 h-8"></i></div>
+                        <div class="text-gray-300 transform transition-transform duration-300">▼</div>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Temporal Batching</h3>
+                    <p class="text-gray-600 text-sm mb-4">Grouping distractions to protect core hours.</p>
+                    <div class="hidden-content hidden text-sm text-gray-500 space-y-2 border-t border-gray-100 pt-3">
+                        <p>• Check email only at 11am and 4pm.</p>
+                        <p>• The "Pomodoro" method (25m work / 5m break) to retrain focus endurance.</p>
+                    </div>
+                </div>
+
+                <div class="info-card bg-white p-6 rounded-xl border border-gray-200 shadow-sm cursor-pointer" onclick="toggleStrategy(this)">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="text-indigo-600"><i data-lucide="activity" class="w-8 h-8"></i></div>
+                        <div class="text-gray-300 transform transition-transform duration-300">▼</div>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Dopamine Detox</h3>
+                    <p class="text-gray-600 text-sm mb-4">Resetting the brain's reward baseline.</p>
+                    <div class="hidden-content hidden text-sm text-gray-500 space-y-2 border-t border-gray-100 pt-3">
+                        <p>• Greyscale mode on phone.</p>
+                        <p>• No screens 1 hour after waking.</p>
+                        <p>• Replace "scroll" rewards with physical movement rewards.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-10">
+        <div class="container mx-auto px-6 flex flex-col items-center gap-6">
+
+            <div class="flex gap-8 opacity-60 hover:opacity-100 transition-opacity">
+                <a href="https://youtube.com/@airawatraj" target="_blank" title="YouTube" class="hover:text-red-600 transition">
+                    <i data-lucide="youtube" width="20" height="20"></i>
+                </a>
+                <a href="https://github.com/airawatraj" target="_blank" title="GitHub" class="hover:text-black transition">
+                    <i data-lucide="github" width="20" height="20"></i>
+                </a>
+                <a href="https://kaggle.com/airawatraj" target="_blank" title="Kaggle" class="hover:text-blue-500 transition">
+                    <i data-lucide="database" width="20" height="20"></i>
+                </a>
+            </div>
+
+            <div class="text-center">
+                <p class="font-bold text-sm tracking-tight text-gray-900 mb-1">RAWAT LABS</p>
+                <p class="text-xs text-gray-500 font-mono">Amplifying Consciousness</p>
+            </div>
+            
+            <p class="text-[10px] text-gray-400">&copy; 2025 RAWAT LABS. Melbourne, Australia.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Initialize Icons ---
+        lucide.createIcons();
+
+        // --- State Management ---
+        const state = {
+            interruptionsPerHour: 1,
+            recoveryTimeAvg: 0.38, // 23 mins in hours
+            neuroView: 'both' // 'flow', 'scroll', 'both'
+        };
+
+        // --- Chart Objects ---
+        let trendChart;
+        let neuroChart;
+        let costChart;
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initTrendChart();
+            initNeuroChart();
+            initCostChart();
+            updateCostCalculator(); // Run initial calc
+            
+            // Event Listeners
+            document.getElementById('interruption-slider').addEventListener('input', (e) => {
+                state.interruptionsPerHour = parseInt(e.target.value);
+                document.getElementById('interruptions-display').textContent = state.interruptionsPerHour;
+                updateCostCalculator();
+            });
+        });
+
+        // --- Chart Config Defaults (Rawat Labs/Swiss Style) ---
+        Chart.defaults.color = '#64748B'; // Slate-500
+        Chart.defaults.font.family = 'Inter';
+        Chart.defaults.borderColor = '#E2E8F0'; // Gray-200
+
+        // --- Section 1: Attention Trend Chart (Line) ---
+        function initTrendChart() {
+            const ctx = document.getElementById('attentionTrendChart').getContext('2d');
+            
+            const data = {
+                labels: ['2004', '2008', '2012', '2016', '2020', '2024'],
+                datasets: [{
+                    label: 'Avg. Seconds on Screen Before Switching',
+                    data: [150, 120, 75, 47, 44, 42],
+                    borderColor: '#475569', // Slate 600
+                    backgroundColor: 'rgba(71, 85, 105, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#475569',
+                    pointRadius: 5
+                }]
+            };
+
+            trendChart = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#111827',
+                            titleFont: { family: 'Inter' },
+                            bodyFont: { family: 'Inter' },
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + ' seconds average focus';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#f1f5f9' },
+                            title: { display: true, text: 'Seconds' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- Section 2: Neurochemistry Chart (Radar) ---
+        function initNeuroChart() {
+            const ctx = document.getElementById('neuroChart').getContext('2d');
+            
+            const data = {
+                labels: ['Dopamine (Reward)', 'Cortisol (Stress)', 'Norepinephrine (Focus)', 'Serotonin (Satisfaction)', 'Anandamide (Joy)'],
+                datasets: [
+                    {
+                        label: 'Flow State',
+                        data: [60, 20, 90, 80, 85],
+                        fill: true,
+                        backgroundColor: 'rgba(16, 185, 129, 0.2)', // Emerald
+                        borderColor: 'rgb(16, 185, 129)',
+                        pointBackgroundColor: 'rgb(16, 185, 129)',
+                        pointBorderColor: '#fff',
+                    },
+                    {
+                        label: 'Doomscrolling',
+                        data: [95, 70, 30, 10, 5],
+                        fill: true,
+                        backgroundColor: 'rgba(239, 68, 68, 0.2)', // Red
+                        borderColor: 'rgb(239, 68, 68)',
+                        pointBackgroundColor: 'rgb(239, 68, 68)',
+                        pointBorderColor: '#fff',
+                    }
+                ]
+            };
+
+            neuroChart = new Chart(ctx, {
+                type: 'radar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: '#E2E8F0' },
+                            grid: { color: '#E2E8F0' },
+                            pointLabels: {
+                                font: {
+                                    family: 'Inter',
+                                    size: 11,
+                                    weight: '600'
+                                },
+                                color: '#475569'
+                            },
+                            ticks: { display: false, backdropColor: 'transparent' }
+                        }
+                    },
+                    plugins: {
+                        legend: { 
+                            position: 'bottom',
+                            labels: { fontFamily: 'Inter', usePointStyle: true }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateNeuroChart(view) {
+            state.neuroView = view;
+            
+            // Text Update
+            const textContainer = document.getElementById('neuro-text-container');
+            let htmlContent = '';
+            
+            if (view === 'flow') {
+                neuroChart.data.datasets[0].hidden = false;
+                neuroChart.data.datasets[1].hidden = true;
+                htmlContent = `
+                    <div class="p-6 bg-white border-l-4 border-emerald-600 rounded-r-lg shadow-sm border-t border-r border-b border-gray-100 animate-fade-in">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">🧠 The Flow State</h3>
+                        <p class="text-gray-600 mb-3">Sustained by a cocktail of performance enhancers. Low stress, high engagement.</p>
+                        <p class="text-sm text-emerald-700 font-medium">Result: Deep Work, Creativity, fulfillment.</p>
+                    </div>`;
+            } else if (view === 'scroll') {
+                neuroChart.data.datasets[0].hidden = true;
+                neuroChart.data.datasets[1].hidden = false;
+                htmlContent = `
+                    <div class="p-6 bg-white border-l-4 border-red-500 rounded-r-lg shadow-sm border-t border-r border-b border-gray-100 animate-fade-in">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">📱 The Scroll Loop</h3>
+                        <p class="text-gray-600 mb-3">High <strong>Dopamine</strong> spikes driven by variable rewards, coupled with rising <strong>Cortisol</strong> (anxiety) due to lack of completion/satisfaction.</p>
+                        <p class="text-sm text-red-700 font-medium">Result: Brain fog, fatigue, procrastination.</p>
+                    </div>`;
+            } else {
+                neuroChart.data.datasets[0].hidden = false;
+                neuroChart.data.datasets[1].hidden = false;
+                htmlContent = `
+                     <div class="p-6 bg-white border-l-4 border-gray-800 rounded-r-lg shadow-sm border-t border-r border-b border-gray-100 animate-fade-in">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">⚖️ The Chemical Imbalance</h3>
+                        <p class="text-gray-600 mb-3">Notice the inversion. Scrolling provides stimulation (Dopamine) without the satisfaction (Serotonin) of Flow. It is "empty calories" for the brain.</p>
+                    </div>`;
+            }
+            
+            textContainer.innerHTML = htmlContent;
+            neuroChart.update();
+            lucide.createIcons(); // Re-init icons for injected HTML
+        }
+
+        // --- Section 3: Cost Calculator (Stacked Bar) ---
+        function initCostChart() {
+            const ctx = document.getElementById('costChart').getContext('2d');
+            
+            costChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Your Work Day (8h)'],
+                    datasets: [
+                        {
+                            label: 'Deep Work Time',
+                            data: [7.6],
+                            backgroundColor: '#a3b18a', // Sage Green
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Context Switching / Recovery',
+                            data: [0.4],
+                            backgroundColor: '#e76f51', // Burnt Sienna
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y', // Horizontal Bar
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: true,
+                            max: 8,
+                            title: { display: true, text: 'Hours' },
+                            grid: { color: '#f1f5f9' }
+                        },
+                        y: {
+                            stacked: true,
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw.toFixed(1) + ' hrs';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateCostCalculator() {
+            const interruptions = state.interruptionsPerHour;
+            const totalHours = 8;
+            const totalInterruptions = interruptions * totalHours;
+            
+            // Calculate Switching Cost
+            let lostHours = totalInterruptions * state.recoveryTimeAvg;
+            
+            if (lostHours > 7.5) lostHours = 7.5; 
+            
+            const workHours = totalHours - lostHours;
+
+            // Update DOM
+            document.getElementById('lost-time-display').textContent = lostHours.toFixed(1) + ' hrs';
+            document.getElementById('deep-work-display').textContent = workHours.toFixed(1) + ' hrs';
+
+            // Update Chart
+            costChart.data.datasets[0].data = [workHours];
+            costChart.data.datasets[1].data = [lostHours];
+            
+            // Dynamic Color Shift
+            if (workHours < 4) {
+                costChart.data.datasets[0].backgroundColor = '#d6d3d1'; 
+                document.getElementById('deep-work-display').classList.replace('text-emerald-600', 'text-red-600');
+            } else {
+                costChart.data.datasets[0].backgroundColor = '#10b981';
+                document.getElementById('deep-work-display').classList.replace('text-red-600', 'text-emerald-600');
+            }
+
+            costChart.update();
+        }
+
+        // --- Interaction: Scroll to Section ---
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- Interaction: Cards Accordion ---
+        function toggleStrategy(element) {
+            const content = element.querySelector('.hidden-content');
+            const arrow = element.querySelector('.transition-transform');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                arrow.style.transform = 'rotate(180deg)';
+                element.classList.add('border-l-4', 'border-indigo-600'); 
+            } else {
+                content.classList.add('hidden');
+                arrow.style.transform = 'rotate(0deg)';
+                element.classList.remove('border-l-4', 'border-indigo-600');
+            }
+        }
+    </script>
+</body>
+</html>
