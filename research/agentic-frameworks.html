@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI: Minimal Framework & Language Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f1f5e9; /* Slate 100 */
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #06b6d4; border-radius: 4px; }
+
+        /* Chart Container Rules */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 350px; /* Reduced height */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container { height: 250px; } /* Reduced height on mobile */
+        }
+
+        /* Utilities */
+        .card {
+            background-color: #1e293b; /* Slate 800 */
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #334155;
+        }
+        
+        .google-marker-text { color: #10b981; font-weight: 800; }
+        .microsoft-marker-text { color: #3b82f6; font-weight: 800; }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- Header / Minimal Title -->
+    <header class="py-6 px-4 text-center bg-gradient-to-b from-slate-900 to-slate-800 border-b border-slate-700">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
+                Agentic AI Frameworks & Languages
+            </h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-4 space-y-8">
+        
+        <!-- Section: Frameworks and Ecosystems (Consolidated) -->
+        <section>
+            <h2 class="text-2xl font-bold text-white mb-4 text-center">Language & Framework Ecosystems</h2>
+            
+            <!-- Consolidated Table (Replaces the 3 cards and the previous table) -->
+            <div class="card p-4">
+                 <strong class="text-violet-400 block mb-3 text-lg font-semibold border-b border-slate-700 pb-2">Primary Frameworks by Language & Deployment Risk</strong>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-slate-300">
+                        <thead class="text-xs uppercase text-violet-400 border-b border-violet-500">
+                            <tr>
+                                <th scope="col" class="py-1 px-2">Language</th>
+                                <th scope="col" class="py-1 px-2">Frameworks & Role</th>
+                                <th scope="col" class="py-1 px-2">Lock-in Risk</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-slate-800 hover:bg-slate-800 transition duration-150">
+                                <th scope="row" class="py-2 px-2 font-semibold text-white">Python</th>
+                                <td class="py-2 px-2">LangChain, LlamaIndex, AutoGen, CrewAI. Essential for data science workflows.</td>
+                                <td class="py-2 px-2 text-emerald-400 font-medium">Low (Codebase)</td>
+                            </tr>
+                            <tr class="border-b border-slate-800 hover:bg-slate-800 transition duration-150">
+                                <th scope="row" class="py-2 px-2 font-semibold text-white">C# / .NET</th>
+                                <td class="py-2 px-2">Primary for <strong>Semantic Kernel</strong> (SK), ideal for Microsoft enterprise apps.</td>
+                                <td class="py-2 px-2 text-red-400 font-medium">High (Ecosystem)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800 transition duration-150">
+                                <th scope="row" class="py-2 px-2 font-semibold text-white">Multi-SDK</th>
+                                <td class="py-2 px-2"><span class="google-marker-text">Vertex AI</span> & LangChain offer SDKs for Node.js/TypeScript, Go, and Java.</td>
+                                <td class="py-2 px-2 text-yellow-400 font-medium">Moderate (Platform)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pydantic Callout -->
+            <div class="mt-4 p-4 bg-yellow-900/50 rounded-lg border-l-4 border-yellow-400">
+                <strong class="text-yellow-400 block mb-1">Critical Tool: Pydantic & Structured Output</strong>
+                <p class="text-xs text-slate-300">
+                    Pydantic is essential across Python frameworks (LangChain, AutoGen, Vertex AI SDK) for defining data schemas, guaranteeing structured output, and enabling reliable LLM Function Calling.
+                </p>
+            </div>
+            
+            <!-- Vendor Lock-in Callout (NEW) -->
+            <div class="mt-4 p-4 bg-red-900/50 rounded-lg border-l-4 border-red-400">
+                <strong class="text-red-400 block mb-1">Vendor Lock-in Context</strong>
+                <p class="text-xs text-slate-300">
+                    <strong>Low Lock-in</strong> indicates open-source frameworks (LangChain, CrewAI) that are LLM-agnostic, meaning they can easily switch models and providers. 
+                    <strong>High/Moderate Lock-in</strong> refers to platforms (Vertex AI, Semantic Kernel) deeply integrated with a specific cloud provider's proprietary services (e.g., monitoring, data warehousing, specific model access).
+                </p>
+            </div>
+        </section>
+
+        <!-- Section: Framework Capabilities (Charts) -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="card p-4">
+                <h3 class="text-lg font-bold text-white mb-2 text-center">Framework Popularity (Adoption Score)</h3>
+                <div class="chart-container">
+                    <canvas id="marketShareChart"></canvas>
+                </div>
+                 <!-- Chart 1 Legend -->
+                <div class="flex flex-wrap justify-center space-x-4 text-xs mt-2 pt-2 border-t border-slate-700">
+                    <div class="flex items-center text-slate-300">
+                        <span class="inline-block w-2 h-2 rounded-full mr-1" style="background-color: #10b981;"></span> 
+                        Google (Vertex AI)
+                    </div>
+                    <div class="flex items-center text-slate-300">
+                        <span class="inline-block w-2 h-2 rounded-full mr-1" style="background-color: #3b82f6;"></span> 
+                        Microsoft (AutoGen/SK)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card p-4">
+                <h3 class="text-lg font-bold text-white mb-2 text-center">Capability Radar</h3>
+                <div class="chart-container">
+                    <canvas id="capabilityRadar"></canvas>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="text-center text-slate-500 py-4 border-t border-slate-800">
+            <p class="text-xs">Minimal Infographic View.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- Utility Functions ---
+
+        // Label Wrapping Function 
+        function splitLabel(str, maxLength = 16) {
+            if (str.length <= maxLength) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + " " + words[i]).length < maxLength) {
+                    currentLine += " " + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // Global Chart Defaults for Vibe
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = 'Inter';
+        Chart.defaults.borderColor = '#334155';
+
+        // Custom Tooltip Callback for cleaner labels
+        const customTooltip = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    }
+                    return label;
+                },
+                label: function(tooltipItem) {
+                    let label = tooltipItem.dataset.label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    if (tooltipItem.formattedValue !== undefined) {
+                        label += tooltipItem.formattedValue;
+                    }
+                    return label;
+                }
+            }
+        };
+        
+        // --- Chart 1: Market Share (Horizontal Bar) ---
+        const ctxMarket = document.getElementById('marketShareChart').getContext('2d');
+        // Cleaned labels (color association is handled by the legend below the graph)
+        const marketLabels = [
+            'LangChain/Graph', 
+            'Vertex AI', 
+            'LlamaIndex', 
+            'AutoGen', 
+            'CrewAI', 
+            'Semantic Kernel'
+        ];
+        
+        new Chart(ctxMarket, {
+            type: 'bar',
+            data: {
+                labels: marketLabels.map(l => splitLabel(l)),
+                datasets: [{
+                    label: 'Adoption Score (0-100)',
+                    data: [95, 85, 80, 75, 65, 50],
+                    backgroundColor: [
+                        '#8b5cf6', // Violet - LangChain
+                        '#10b981', // Emerald - Vertex AI (Google)
+                        '#06b6d4', // Cyan - LlamaIndex
+                        '#3b82f6', // Blue - AutoGen (Microsoft)
+                        '#ec4899', // Pink - CrewAI
+                        '#64748b'  // Slate - Semantic Kernel (Microsoft)
+                    ],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: customTooltip
+                },
+                scales: {
+                    x: {
+                        grid: { display: false }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // --- Chart 2: Capability Radar (Radar Chart) ---
+        const ctxRadar = document.getElementById('capabilityRadar').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['Ease of Start', 'Multi-Agent', 'State Management', 'RAG Power', 'Observability'].map(l => splitLabel(l)),
+                datasets: [
+                    {
+                        label: 'LangChain',
+                        data: [60, 70, 95, 85, 90],
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                        pointBackgroundColor: '#8b5cf6',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'CrewAI',
+                        data: [90, 85, 60, 60, 70],
+                        borderColor: '#ec4899',
+                        backgroundColor: 'rgba(236, 72, 153, 0.2)',
+                        pointBackgroundColor: '#ec4899',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'AutoGen (Microsoft)', 
+                        data: [50, 95, 75, 65, 50],
+                        borderColor: '#3b82f6', 
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        pointBackgroundColor: '#3b82f6',
+                        borderWidth: 2
+                    },
+                     {
+                        label: 'Vertex AI (Google)', 
+                        data: [55, 65, 90, 95, 98], 
+                        borderColor: '#10b981', 
+                        backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                        pointBackgroundColor: '#10b981',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                scales: {
+                    r: {
+                        angleLines: { color: '#334155' },
+                        grid: { color: '#334155' },
+                        pointLabels: {
+                            color: '#cbd5e1',
+                            font: { size: 12 }
+                        },
+                        ticks: { display: false, max: 100 }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#cbd5e1' }
+                    },
+                    tooltip: customTooltip
+                }
+            }
+        });
+        
+        // --- Dummy Plotly chart function removal (not needed for minimal view) ---
+        
+    </script>
+</body>
+</html>
