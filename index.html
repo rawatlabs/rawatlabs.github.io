@@ -384,7 +384,7 @@
                         <h4 class="font-bold text-gray-800 text-lg mb-2">COGNI BREATH</h4>
                         <p class="text-sm text-gray-600 mb-6 flex-grow">
                             <strong class="text-gray-800">The Path to Prajna (Wisdom).</strong><br>
-                            A dedicated tablet interface for meditation, listening to chants , and deep reading (Swadhyaya).
+                            A dedicated tablet interface for meditation, journaling, and deep reading (Swadhyaya).
                         </p>
                         <div class="flex flex-col gap-3 mt-auto">
                             <button class="w-full text-center bg-gray-100 text-gray-400 text-xs font-bold py-2 rounded cursor-not-allowed">Coming Soon</button>
@@ -404,7 +404,37 @@
                         </p>
                         <div class="flex flex-col gap-3 mt-auto">
                             <button class="w-full text-center bg-gray-100 text-gray-400 text-xs font-bold py-2 rounded cursor-not-allowed">Coming Soon</button>
-                            <button onclick="openGallery('cogni-ground')" class="text-xs text-gray-500 hover:text-emerald-600 transition underline">Preview</button>
+                            <button onclick="openGallery('cogni-ground')" class="text-xs text-gray-500 hover:text-emerald-600 transition underline">Preview App</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-md transition">
+                        <div class="flex items-start justify-between mb-4">
+                            <img src="assets/cogni-weaver-logo.ico" class="w-10 h-10 object-contain" alt="Cogni Weaver Logo">
+                            <span class="text-[10px] font-mono bg-blue-50 text-blue-700 px-2 py-1 rounded border border-blue-100">INTELLECT</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-lg mb-2">COGNI WEAVER</h4>
+                        <p class="text-sm text-gray-600 mb-6 flex-grow">
+                            <strong class="text-gray-800">The Scholar's Loom.</strong><br>
+                            Research citation browser extension.
+                        </p>
+                        <div class="flex flex-col gap-3 mt-auto">
+                            <button class="w-full text-center bg-gray-100 text-gray-400 text-xs font-bold py-2 rounded cursor-not-allowed">Coming Soon</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-md transition">
+                        <div class="flex items-start justify-between mb-4">
+                            <span class="text-4xl leading-none">👐🏻</span>
+                            <span class="text-[10px] font-mono bg-pink-50 text-pink-700 px-2 py-1 rounded border border-pink-100">CONNECTION</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-lg mb-2">COGNI SIGN</h4>
+                        <p class="text-sm text-gray-600 mb-6 flex-grow">
+                            <strong class="text-gray-800">Bridging Silence.</strong><br>
+                            AR app for Indian Sign Language and Auslan communication.
+                        </p>
+                        <div class="flex flex-col gap-3 mt-auto">
+                            <button class="w-full text-center bg-gray-100 text-gray-400 text-xs font-bold py-2 rounded cursor-not-allowed">Coming Soon</button>
                         </div>
                     </div>
                 </div>
@@ -591,7 +621,6 @@
         renderChart('automating');
 
         // --- GALLERY LOGIC ---
-        // Updated keys and file paths
         const galleries = {
             'cogni-still': [
                 'assets/cogni-still-1.png',
@@ -650,7 +679,6 @@
             setTimeout(() => {
                  let src = galleries[currentApp][currentIndex];
                  modalImg.src = src;
-                 // Replaces hyphens with spaces to display "COGNI STILL PREVIEW" correctly
                  caption.innerText = `${currentApp.replace(/-/g, ' ').toUpperCase()} PREVIEW | ${currentIndex + 1} of ${galleries[currentApp].length}`;
                  modalImg.style.opacity = 1;
             }, 100);
