@@ -372,7 +372,7 @@
                         </p>
                         <div class="flex flex-col gap-3 mt-auto">
                             <a href="https://github.com/cogni-chat/time-shield" class="w-full text-center bg-indigo-600 text-white text-xs font-bold py-2 rounded hover:bg-indigo-700 transition">Get Extension</a>
-                            <button onclick="openGallery('timeshield')" class="text-xs text-gray-500 hover:text-indigo-600 transition underline">Preview</button>
+                            <button onclick="openGallery('cogni-still')" class="text-xs text-gray-500 hover:text-indigo-600 transition underline">Preview</button>
                         </div>
                     </div>
 
@@ -384,11 +384,11 @@
                         <h4 class="font-bold text-gray-800 text-lg mb-2">COGNI BREATH</h4>
                         <p class="text-sm text-gray-600 mb-6 flex-grow">
                             <strong class="text-gray-800">The Path to Prajna (Wisdom).</strong><br>
-                            A dedicated tablet interface for meditation, journaling, and deep reading (Swadhyaya).
+                            A dedicated tablet interface for meditation, listening to chants , and deep reading (Swadhyaya).
                         </p>
                         <div class="flex flex-col gap-3 mt-auto">
                             <button class="w-full text-center bg-gray-100 text-gray-400 text-xs font-bold py-2 rounded cursor-not-allowed">Coming Soon</button>
-                            <button onclick="openGallery('prajna')" class="text-xs text-gray-500 hover:text-amber-600 transition underline">Preview</button>
+                            <button onclick="openGallery('cogni-breath')" class="text-xs text-gray-500 hover:text-amber-600 transition underline">Preview</button>
                         </div>
                     </div>
 
@@ -400,11 +400,11 @@
                         <h4 class="font-bold text-gray-800 text-lg mb-2">COGNI GROUND</h4>
                         <p class="text-sm text-gray-600 mb-6 flex-grow">
                              <strong class="text-gray-800">The Satvic (Pure) Standard.</strong><br>
-                             Computer vision for the grocery aisle. Instantly analyses ingredients to flag Ultra-Processed Foods (UPF).
+                            Computer vision for the grocery aisle. Instantly analyses ingredients to flag Ultra-Processed Foods (UPF).
                         </p>
                         <div class="flex flex-col gap-3 mt-auto">
                             <button class="w-full text-center bg-gray-100 text-gray-400 text-xs font-bold py-2 rounded cursor-not-allowed">Coming Soon</button>
-                            <button onclick="openGallery('foodwise')" class="text-xs text-gray-500 hover:text-emerald-600 transition underline">Preview App</button>
+                            <button onclick="openGallery('cogni-ground')" class="text-xs text-gray-500 hover:text-emerald-600 transition underline">Preview</button>
                         </div>
                     </div>
                 </div>
@@ -591,25 +591,26 @@
         renderChart('automating');
 
         // --- GALLERY LOGIC ---
+        // Updated keys and file paths
         const galleries = {
-            'timeshield': [
-                'assets/time-shield-1.png',
-                'assets/time-shield-2.png',
-                'assets/time-shield-3.png'
+            'cogni-still': [
+                'assets/cogni-still-1.png',
+                'assets/cogni-still-2.png',
+                'assets/cogni-still-3.png'
             ],
-            'prajna': [
-                'assets/prajna-1.png',
-                'assets/prajna-2.png',
-                'assets/prajna-3.png',
-                'assets/prajna-4.jpg',
-                'assets/prajna-5.jpg'
+            'cogni-breath': [
+                'assets/cogni-breath-1.png',
+                'assets/cogni-breath-2.png',
+                'assets/cogni-breath-3.png',
+                'assets/cogni-breath-4.png',
+                'assets/cogni-breath-5.png'
             ],
-            'foodwise': [
-                'assets/foodwise-1.png',
-                'assets/foodwise-2.png',
-                'assets/foodwise-3.png',
-                'assets/foodwise-4.png',
-                'assets/foodwise-5.png'
+            'cogni-ground': [
+                'assets/cogni-ground-1.png',
+                'assets/cogni-ground-2.png',
+                'assets/cogni-ground-3.png',
+                'assets/cogni-ground-4.png',
+                'assets/cogni-ground-5.png'
             ]
         };
 
@@ -649,7 +650,8 @@
             setTimeout(() => {
                  let src = galleries[currentApp][currentIndex];
                  modalImg.src = src;
-                 caption.innerText = `${currentApp.toUpperCase()} PREVIEW | ${currentIndex + 1} of ${galleries[currentApp].length}`;
+                 // Replaces hyphens with spaces to display "COGNI STILL PREVIEW" correctly
+                 caption.innerText = `${currentApp.replace(/-/g, ' ').toUpperCase()} PREVIEW | ${currentIndex + 1} of ${galleries[currentApp].length}`;
                  modalImg.style.opacity = 1;
             }, 100);
         }
