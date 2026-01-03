@@ -100,6 +100,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.9);
             border: 1px solid #333;
             animation: zoomIn 0.3s ease;
+            object-fit: contain;
         }
 
         @keyframes zoomIn {
@@ -148,6 +149,21 @@
             text-align: center;
             width: 100%;
             letter-spacing: 1px;
+        }
+
+        /* --- BACK TO TOP --- */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #000;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            z-index: 99;
+            transition: opacity 0.3s;
         }
 
         /* --- CHART STYLES --- */
@@ -259,11 +275,11 @@
 
                 <div class="flex justify-center gap-0 mb-10">
                     <button id="btn-automating" onclick="renderChart('automating')"
-                        class="px-6 py-3 text-sm font-medium rounded-l-lg border border-gray-300 bg-gray-100 text-gray-900 transition focus:z-10 focus:ring-2 focus:ring-indigo-500">
+                        class="px-4 md:px-6 py-3 text-xs md:text-sm font-medium rounded-l-lg border border-gray-300 bg-gray-100 text-gray-900 transition focus:z-10 focus:ring-2 focus:ring-indigo-500">
                         Cognitive Labour (Automating)
                     </button>
                     <button id="btn-emerging" onclick="renderChart('emerging')"
-                        class="px-6 py-3 text-sm font-medium rounded-r-lg border border-l-0 border-gray-300 bg-white text-gray-500 hover:bg-gray-50 transition focus:z-10 focus:ring-2 focus:ring-indigo-500">
+                        class="px-4 md:px-6 py-3 text-xs md:text-sm font-medium rounded-r-lg border border-l-0 border-gray-300 bg-white text-gray-500 hover:bg-gray-50 transition focus:z-10 focus:ring-2 focus:ring-indigo-500">
                         Conscious Work (Emerging)
                     </button>
                 </div>
@@ -362,7 +378,7 @@
                     
                     <div class="bg-white p-6 rounded-lg border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-md transition">
                         <div class="flex items-start justify-between mb-4">
-                            <img src="assets/cogni-still.ico" class="w-10 h-10 object-contain" alt="Cogni Still Logo">
+                            <img src="assets/cogni-still.ico" loading="lazy" class="w-10 h-10 object-contain" alt="Cogni Still Logo">
                             <span class="text-[10px] font-mono bg-indigo-50 text-indigo-700 px-2 py-1 rounded border border-indigo-100">MIND</span>
                         </div>
                         <h4 class="font-bold text-gray-800 text-lg mb-2">COGNI STILL</h4>
@@ -378,7 +394,7 @@
 
                     <div class="bg-white p-6 rounded-lg border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-md transition">
                         <div class="flex items-start justify-between mb-4">
-                            <img src="assets/cogni-breath.ico" class="w-10 h-10 object-contain" alt="Cogni Breath Logo">
+                            <img src="assets/cogni-breath.ico" loading="lazy" class="w-10 h-10 object-contain" alt="Cogni Breath Logo">
                             <span class="text-[10px] font-mono bg-amber-50 text-amber-700 px-2 py-1 rounded border border-amber-100">SOUL</span>
                         </div>
                         <h4 class="font-bold text-gray-800 text-lg mb-2">COGNI BREATH</h4>
@@ -394,7 +410,7 @@
 
                     <div class="bg-white p-6 rounded-lg border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-md transition">
                         <div class="flex items-start justify-between mb-4">
-                            <img src="assets/cogni-ground.ico" class="w-10 h-10 object-contain" alt="Cogni Ground Logo">
+                            <img src="assets/cogni-ground.ico" loading="lazy" class="w-10 h-10 object-contain" alt="Cogni Ground Logo">
                             <span class="text-[10px] font-mono bg-emerald-50 text-emerald-700 px-2 py-1 rounded border border-emerald-100">BODY</span>
                         </div>
                         <h4 class="font-bold text-gray-800 text-lg mb-2">COGNI GROUND</h4>
@@ -410,7 +426,7 @@
 
                     <div class="bg-white p-6 rounded-lg border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-md transition">
                         <div class="flex items-start justify-between mb-4">
-                            <img src="assets/cogni-weaver-logo.ico" class="w-10 h-10 object-contain" alt="Cogni Weaver Logo">
+                            <img src="assets/cogni-weaver-logo.ico" loading="lazy" class="w-10 h-10 object-contain" alt="Cogni Weaver Logo">
                             <span class="text-[10px] font-mono bg-blue-50 text-blue-700 px-2 py-1 rounded border border-blue-100">INTELLECT</span>
                         </div>
                         <h4 class="font-bold text-gray-800 text-lg mb-2">COGNI WEAVER</h4>
@@ -443,7 +459,7 @@
                     <div class="absolute top-0 right-0 bg-indigo-100 text-indigo-700 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">The Orchestrator</div>
                     <div class="md:flex items-start gap-6">
                         <div class="w-14 h-14 bg-indigo-600 rounded-lg flex items-center justify-center text-white mb-4 md:mb-0 shrink-0 shadow-lg shadow-indigo-200">
-                            <img src="assets/cogni-one.ico" class="w-10 h-10 object-contain" alt="Cogni One Logo">
+                            <img src="assets/cogni-one.ico" loading="lazy" class="w-10 h-10 object-contain" alt="Cogni One Logo">
                         </div>
                         <div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2">Cogni One</h3>
@@ -509,6 +525,10 @@
         </section>
     </main>
 
+    <div id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i data-lucide="arrow-up"></i>
+    </div>
+
     <footer class="bg-white border-t border-gray-200 py-10">
         <div class="container mx-auto px-6 flex flex-col items-center gap-6">
 
@@ -546,6 +566,16 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // --- BACK TO TOP LOGIC ---
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
 
         // --- MOBILE MENU LOGIC ---
         const menuBtn = document.getElementById('mobile-menu-btn');
@@ -588,11 +618,11 @@
             const inactiveClass = "bg-white text-gray-500 hover:bg-gray-50";
 
             if (type === 'automating') {
-                btnAutomating.className = `px-6 py-3 text-sm font-medium rounded-l-lg border border-r-0 border-gray-300 transition ${activeClass}`;
-                btnEmerging.className = `px-6 py-3 text-sm font-medium rounded-r-lg border border-l-0 border-gray-300 transition ${inactiveClass}`;
+                btnAutomating.className = `px-4 md:px-6 py-3 text-xs md:text-sm font-medium rounded-l-lg border border-r-0 border-gray-300 transition ${activeClass}`;
+                btnEmerging.className = `px-4 md:px-6 py-3 text-xs md:text-sm font-medium rounded-r-lg border border-l-0 border-gray-300 transition ${inactiveClass}`;
             } else {
-                btnAutomating.className = `px-6 py-3 text-sm font-medium rounded-l-lg border border-r-0 border-gray-300 transition ${inactiveClass}`;
-                btnEmerging.className = `px-6 py-3 text-sm font-medium rounded-r-lg border border-l-0 border-gray-300 transition ${activeClass}`;
+                btnAutomating.className = `px-4 md:px-6 py-3 text-xs md:text-sm font-medium rounded-l-lg border border-r-0 border-gray-300 transition ${inactiveClass}`;
+                btnEmerging.className = `px-4 md:px-6 py-3 text-xs md:text-sm font-medium rounded-r-lg border border-l-0 border-gray-300 transition ${activeClass}`;
             }
 
             container.innerHTML = ''; 
