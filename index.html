@@ -7,6 +7,7 @@
     <title>RAWAT LABS | Amplifying Consciousness</title>
     <meta name="description"
         content="Navigating the disruption of AI by exploring our inner world. A framework for the Silicon Age.">
+    <link rel="canonical" href="https://rawatlabs.github.io" />
 
     <meta property="og:title" content="RAWAT LABS | Amplifying Consciousness" />
     <meta property="og:description" content="Navigating the disruption of AI by exploring our inner world. A framework for the Silicon Age." />
@@ -125,10 +126,13 @@
             transition: 0.3s;
             cursor: pointer;
             z-index: 1001;
+            background: transparent;
+            border: none;
         }
 
-        .close-btn:hover {
+        .close-btn:hover, .close-btn:focus {
             color: var(--cogni-orange);
+            outline: none;
         }
 
         .nav-btn {
@@ -143,9 +147,15 @@
             font-size: 30px;
             transition: 0.3s ease;
             user-select: none;
+            background: transparent;
+            border: none;
         }
 
-        .nav-btn:hover { color: var(--cogni-orange); transform: scale(1.2); }
+        .nav-btn:hover, .nav-btn:focus { 
+            color: var(--cogni-orange); 
+            transform: scale(1.2); 
+            outline: none;
+        }
         .prev { left: 30px; }
         .next { right: 30px; }
 
@@ -171,6 +181,12 @@
             display: none;
             z-index: 99;
             transition: opacity 0.3s;
+            border: none;
+        }
+        
+        #back-to-top:focus {
+            outline: 2px solid var(--cogni-orange);
+            outline-offset: 2px;
         }
 
         /* --- CHART STYLES --- */
@@ -234,7 +250,7 @@
                 <a href="#research" class="nav-item">Research</a>
             </nav>
 
-            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-black transition-colors">
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-black transition-colors" aria-label="Toggle navigation menu" aria-expanded="false">
                 <i data-lucide="menu"></i>
             </button>
         </div>
@@ -382,7 +398,7 @@
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-6 mb-12">
-                    
+                     
                     <div class="w-full md:w-[31%] bg-white p-6 rounded-lg border border-gray-200 flex flex-col h-full shadow-sm hover:shadow-md transition">
                         <div class="flex items-start justify-between mb-4">
                             <img src="assets/cogni-still.ico" loading="lazy" class="w-10 h-10 object-contain" alt="Cogni Still Logo">
@@ -471,7 +487,7 @@
                         <div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2">Cogni One</h3>
                             <p class="text-sm text-gray-600 mb-4 leading-relaxed max-w-2xl">
-                                The flagship Local-First Agent. It orchestrates tools like Cogni Still, Cogni Breath, Cogni Ground, Cogni Weaver, and Cogni Sign into a single, cohesive intelligence hosted on your hardware.
+                                The flagship Local-First <strong>AI Agent</strong>. It orchestrates tools like Cogni Still, Cogni Breath, Cogni Ground, Cogni Weaver, and Cogni Sign into a single, cohesive intelligence hosted on your hardware.
                             </p>
                             <a href="https://cogni.chat" target="_blank" class="inline-flex items-center text-sm font-semibold text-indigo-600 hover:text-indigo-800">
                                 Visit Product Site <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
@@ -532,7 +548,7 @@
         </section>
     </main>
 
-    <div id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <div id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top" role="button" tabindex="0">
         <i data-lucide="arrow-up"></i>
     </div>
 
@@ -555,19 +571,19 @@
                 <p class="font-bold text-sm tracking-tight text-gray-900 mb-1">RAWAT LABS</p>
                 <p class="text-xs text-gray-500 font-mono">Amplifying Consciousness</p>
             </div>
-            
+             
             <p class="text-[10px] text-gray-400">&copy; 2025 RAWAT LABS. Melbourne, Australia.</p>
         </div>
     </footer>
 
-    <div id="galleryModal" class="modal">
-        <span class="close-btn" onclick="closeGallery()">&times;</span>
+    <div id="galleryModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="caption">
+        <button class="close-btn" onclick="closeGallery()" aria-label="Close gallery">&times;</button>
         
-        <img class="modal-content" id="modalImg">
+        <img class="modal-content" id="modalImg" alt="Gallery preview">
         <div id="caption" class="caption-text"></div>
 
-        <a class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</a>
-        <a class="nav-btn next" onclick="changeSlide(1)">&#10095;</a>
+        <button class="nav-btn prev" onclick="changeSlide(-1)" aria-label="Previous image">&#10094;</button>
+        <button class="nav-btn next" onclick="changeSlide(1)" aria-label="Next image">&#10095;</button>
     </div>
 
     <script>
@@ -583,6 +599,11 @@
                 backToTopBtn.style.display = 'none';
             }
         });
+        
+        // Back to top Keyboard support
+        backToTopBtn.addEventListener('keydown', (e) => {
+            if(e.key === 'Enter') window.scrollTo({top: 0, behavior: 'smooth'});
+        });
 
         // --- MOBILE MENU LOGIC ---
         const menuBtn = document.getElementById('mobile-menu-btn');
@@ -590,10 +611,13 @@
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            const isExpanded = !mobileMenu.classList.contains('hidden');
+            menuBtn.setAttribute('aria-expanded', isExpanded);
         });
 
         function closeMenu() {
             mobileMenu.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', 'false');
         }
 
         // --- CHART DATA ---
@@ -685,22 +709,37 @@
         const modal = document.getElementById('galleryModal');
         const modalImg = document.getElementById('modalImg');
         const caption = document.getElementById('caption');
+        let previousActiveElement = null;
 
         function openGallery(appId) {
             if (!galleries[appId] || galleries[appId].length === 0) {
                 console.error("No images found for ID:", appId);
                 return;
             }
+            // Store element that had focus before opening
+            previousActiveElement = document.activeElement;
+            
             currentApp = appId;
             currentIndex = 0;
             updateImage();
             modal.style.display = "flex";
             document.body.style.overflow = "hidden"; 
+            
+            // Set focus to close button
+            setTimeout(() => {
+                const closeBtn = modal.querySelector('.close-btn');
+                if(closeBtn) closeBtn.focus();
+            }, 100);
         }
 
         function closeGallery() {
             modal.style.display = "none";
             document.body.style.overflow = "auto"; 
+            
+            // Restore focus
+            if (previousActiveElement) {
+                previousActiveElement.focus();
+            }
         }
 
         function changeSlide(n) {
@@ -721,15 +760,36 @@
             }, 100);
         }
 
+        // Close on outside click
         window.onclick = function(event) {
             if (event.target == modal) closeGallery();
         }
         
+        // Keyboard Trapping and Navigation
         document.addEventListener('keydown', function(event) {
             if (modal.style.display === "flex") {
                 if (event.key === "Escape") closeGallery();
                 if (event.key === "ArrowLeft") changeSlide(-1);
                 if (event.key === "ArrowRight") changeSlide(1);
+                
+                // Focus Trap for Tab key
+                if (event.key === "Tab") {
+                    const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
+
+                    if (event.shiftKey) { /* Shift + Tab */
+                        if (document.activeElement === firstElement) {
+                            lastElement.focus();
+                            event.preventDefault();
+                        }
+                    } else { /* Tab */
+                        if (document.activeElement === lastElement) {
+                            firstElement.focus();
+                            event.preventDefault();
+                        }
+                    }
+                }
             }
         });
     </script>
